@@ -1,25 +1,39 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
+import Pages from "vite-plugin-pages";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  define: {
-    'process.env': process.env
-  },
-  plugins: [vue()],
-  resolve: {
-    alias: [
-      {
-        find: /^~.+/,
-        replacement: (val) => {
-          return val.replace(/^~/, "");
+  plugins: [
+    vue(),
+    AutoImport({
+      imports: [
+        "vue",
+        {
+          "naive-ui": [
+            "useDialog",
+            "useMessage",
+            "useNotification",
+            "useLoadingBar",
+          ],
         },
+      ],
+    }),
+    Components({
+      resolvers: [NaiveUiResolver()],
+    }),
+    Pages({
+      extendRoute(route) {
+        const path = route.path;
+        if (path !== "/" && path !== "/authentification/callback") {
+          route.meta ||= {};
+          route.meta.auth = true;
+        }
+        return route;
       },
-    ],
-  },
-  build: {
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    }
-  }
-})
+    }),
+  ],
+});
