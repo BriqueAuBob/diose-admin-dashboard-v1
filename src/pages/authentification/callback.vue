@@ -16,7 +16,9 @@ onMounted(async () => {
   const router = useRouter();
   const route = useRoute();
   const code = route.query.code;
-  const { data } = await axios.get(`auth/oauth2/discord/callback?code=${code}`);
+  const { data } = await axios.get(
+    `auth/oauth2/discord/callback?code=${code}&admin=1`
+  );
   localStorage.setItem("access_token", data.token.token);
   document.cookie =
     "access_token=Bearer " +

@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const client = axios.create({
-  baseURL: "https://api.umaestro.fr",
-  // baseURL: "http://localhost:3333",
+  // baseURL: "https://api.umaestro.fr",
+  baseURL: "http://localhost:3333",
 });
 
 client.interceptors.request.use(function (config: AxiosRequestConfig) {
