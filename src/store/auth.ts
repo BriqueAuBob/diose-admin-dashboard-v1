@@ -17,11 +17,12 @@ export const useAuthStore = defineStore({
       try {
         const { data } = await axios.get("/auth/user");
         this.user = data.user;
-        const admins = ["307531336388968458"];
-        console.log(
-          admins.includes(this.user.discord_id.toString()),
-          this.user.discord_id
-        );
+        const admins = [
+          "307531336388968458",
+          "364008742637010975",
+          "365124713623846913",
+          "530357272531042304",
+        ];
         if (!admins.includes(this.user.discord_id)) {
           this.logout();
           return;
