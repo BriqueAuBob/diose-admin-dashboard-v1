@@ -1,10 +1,10 @@
 <template>
-  <div class="grid-cols-4" :class="!noLayout && 'md:grid'">
+  <div class="grid-cols-4" :class="!noLayout && 'lg:grid'">
     <div class="relative" v-if="!noLayout">
       <Sidebar />
     </div>
     <div
-      class="md:col-span-3 p-12"
+      class="md:col-span-3 py-12 px-6 md:px-12"
       :class="
         noLayout && 'flex flex-col items-center justify-center min-h-screen'
       "
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "@vue/runtime-core";
+import { onMounted, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAuthStore } from "./store/auth";
 
@@ -27,10 +27,12 @@ const router = useRouter();
 const route = useRoute();
 onMounted(() => {
   useAuthStore().login();
-  setTimeout(() => {
-    if (route.path !== "/" && route.path !== "/authentification/callback") {
-      noLayout.value = false;
-    }
-  }, 100);
 });
+
+watch(
+  () => route.path,
+  (path) => {
+    noLayout.value = path === "/" || path === "/authentification/callback";
+  }
+);
 </script>
