@@ -20,7 +20,7 @@
       </svg>
     </button>
     <aside
-      class="z-10 lg:relative w-full ease-in duration-300 top-0 left-0 lg:w-1/4 flex lg:flex h-screen py-10 bg-white dark:bg-dark-900 fixed flex-col justify-between shadow-xl"
+      class="z-10 lg:translate-x-0 lg:opacity-100 w-full ease-in duration-300 top-0 left-0 lg:w-1/4 flex lg:flex h-screen py-10 bg-white dark:bg-dark-900 fixed flex-col justify-between shadow-xl"
       :class="[
         mobileDisplaySidebar ? 'translate-x-0' : 'translate-x-full opacity-0',
       ]"
