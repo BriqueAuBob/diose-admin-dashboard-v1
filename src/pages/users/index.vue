@@ -14,7 +14,8 @@
       />
     </div>
     <div class="pt-12">
-      <div
+      <router-link
+        :to="{ path: '/users/' + user.id }"
         v-for="(user, index) of users"
         :key="index"
         class="bg-white dark:bg-dark-900 hover:dark:bg-dark-800 ease-in duration-300 p-4 rounded-lg shadow-sm flex items-center font-medium text-lg gap-4 mb-3 hover:bg-gray-100 cursor-pointer"
@@ -32,7 +33,7 @@
               : 0
           )
         }}{{ user.discriminator }}
-      </div>
+      </router-link>
       <n-pagination
         class="mt-8"
         v-model:page="page"
@@ -54,7 +55,7 @@ name: "Utilisateurs"
 <script setup>
 import { onMounted, watch } from "@vue/runtime-core";
 import { repeat } from "lodash";
-import axios from "../composables/axios";
+import axios from "../../composables/axios";
 
 const users = ref([]);
 const meta = ref({});
