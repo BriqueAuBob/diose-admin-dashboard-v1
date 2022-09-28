@@ -10,7 +10,7 @@
       "
     >
       <h1 class="font-semibold text-xl mb-8" :class="noLayout && 'text-center'">
-        {{ $route.name }}
+        Hello {{ $route.name }}
       </h1>
       <router-view></router-view>
     </div>
