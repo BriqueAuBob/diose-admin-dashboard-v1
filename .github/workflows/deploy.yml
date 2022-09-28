@@ -1,11 +1,11 @@
-name: Lint
+name: Deployment to server
 on:
   push:
     branches: [main]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: vps-2b071dcc
     steps:
       - uses: actions/checkout@v2
         with:
