@@ -6,14 +6,12 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    defaults:
-      run:
-        working-directory: /var/www/dashboard
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - run: |
+          pwd
           npm i
           npm run build
           sudo service nginx restart
