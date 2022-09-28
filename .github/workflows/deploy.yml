@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: vps-2b071dcc
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
