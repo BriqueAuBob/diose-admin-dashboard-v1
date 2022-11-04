@@ -74,6 +74,7 @@ import {
   UsersIcon,
   SunIcon,
   MoonIcon,
+  CubeIcon,
 } from "@heroicons/vue/24/solid";
 import { useAuthStore } from "../store/auth";
 
@@ -90,6 +91,11 @@ const links = [
     name: "Utilisateurs",
     icon: UsersIcon,
     href: "/users",
+  },
+  {
+    name: "Utilisations",
+    icon: CubeIcon,
+    href: "/usages",
   },
 ];
 
