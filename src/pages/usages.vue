@@ -72,7 +72,7 @@ const form = reactive({
 
 const getUsages = async () => {
   const { data } = await axios.get(
-    `http://localhost:3333/administration/usages?page=${page.value}&search=${form.search}`
+    `/administration/usages?page=${page.value}&search=${form.search}`
   );
   usages.value = data.usages;
   meta.value = data.meta;
