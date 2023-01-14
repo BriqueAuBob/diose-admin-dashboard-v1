@@ -2,7 +2,7 @@
   <div class="bg-white dark:bg-dark-900 w-1/3 p-6 rounded-lg shadow-sm">
     <Button
       class="w-full font-semibold bg-blurple"
-      text="Connexion via Discord"
+      text="Connexion via Discord."
       @click="auth"
     />
   </div>
