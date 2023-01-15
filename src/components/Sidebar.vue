@@ -31,8 +31,8 @@
         >
           <div class="flex gap-4 items-center">
             <img
-              src="https://umaestro.fr/logo.svg"
-              alt="Workflow"
+              src="https://umaestro.fr/img/logo.svg"
+              alt="Logo"
               class="w-auto h-8 text-black"
             />
             umaestro.fr

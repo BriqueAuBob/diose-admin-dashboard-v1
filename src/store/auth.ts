@@ -1,6 +1,5 @@
 import axios from "../composables/axios";
 import { defineStore } from "pinia";
-import { routerKey, useRouter } from "vue-router";
 
 export const useAuthStore = defineStore({
   id: "auth",
@@ -15,13 +14,17 @@ export const useAuthStore = defineStore({
   actions: {
     async login(user) {
       try {
-        const { data } = await axios.get("/auth/user");
-        this.user = data.user;
+        if (!user) {
+          const { data } = await axios.get("/auth/user");
+          this.user = data.user;
+        } else {
+          this.user = user;
+        }
         const admins = [
-          "307531336388968458",
-          "364008742637010975",
-          "365124713623846913",
-          "530357272531042304",
+          "307531336388968458", // bob
+          "364008742637010975", // draks
+          "530357272531042304", // willz
+          "429621241071140887", // zen
         ];
         if (!admins.includes(this.user.discord_id)) {
           this.logout();
