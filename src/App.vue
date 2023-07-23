@@ -1,20 +1,17 @@
 <template>
-  <div class="grid-cols-4" :class="!noLayout && 'lg:grid'">
-    <div class="relative" v-if="!noLayout">
+  <el-container>
+    <el-aside v-if="!noLayout">
       <Sidebar />
-    </div>
-    <div
-      class="md:col-span-3 py-12 px-6 md:px-12"
-      :class="
-        noLayout && 'flex flex-col items-center justify-center min-h-screen'
-      "
-    >
-      <h1 class="font-semibold text-xl mb-8" :class="noLayout && 'text-center'">
-        {{ $route.name }}
-      </h1>
-      <router-view></router-view>
-    </div>
-  </div>
+    </el-aside>
+    <el-container class="is-vertical" :class="noLayout && 'center'">
+      <el-header>
+        <span>
+          {{ $route.name }}
+        </span>
+      </el-header>
+      <el-main><router-view></router-view></el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script setup>

@@ -20,17 +20,13 @@ export const useAuthStore = defineStore({
         } else {
           this.user = user;
         }
-        const admins = [
-          "307531336388968458", // bob
-          "364008742637010975", // draks
-          "530357272531042304", // willz
-          "429621241071140887", // zen
-        ];
-        if (!admins.includes(this.user.discord_id)) {
+        if (!this.user.permissions.includes("view:dashboard")) {
           this.logout();
           return;
         }
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     },
     logout() {
       this.user = null;
