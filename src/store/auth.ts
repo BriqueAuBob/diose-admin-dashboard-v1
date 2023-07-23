@@ -20,7 +20,7 @@ export const useAuthStore = defineStore({
         } else {
           this.user = user;
         }
-        if (!this.user.permissions.includes("view:dashboard")) {
+        if (!this.user.permissions.includes("view_dashboard")) {
           this.logout();
           return;
         }
