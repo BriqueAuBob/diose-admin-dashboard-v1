@@ -1,16 +1,16 @@
 name: Deployment to server
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 
 jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: |
-          npm i
-          npm run build
-          sudo service nginx restart
+    build:
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - run: |
+                  npm i
+                  npm run build
+                  sudo service nginx restart
