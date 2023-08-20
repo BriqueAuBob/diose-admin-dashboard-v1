@@ -12,7 +12,7 @@ name: 'Authentification'
 import axios from '../composables/axios';
 
 const auth = async () => {
-    // window.location.href = 'https://auth.umaestro.fr/?redirect_uri=' + encodeURIComponent(window.location.href);
-    window.location.href = 'http://localhost:5174/?redirect_uri=' + encodeURIComponent(window.location.href);
+    window.location.href = 'https://auth.umaestro.fr/?redirect_uri=' + encodeURIComponent(window.location.href);
+    // window.location.href = 'http://localhost:5174/?redirect_uri=' + encodeURIComponent(window.location.href);
 };
 </script>

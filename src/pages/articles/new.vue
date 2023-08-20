@@ -31,7 +31,7 @@
                     <el-upload
                         class="upload-demo"
                         drag
-                        action="http://localhost:3000/uploads"
+                        action="https://api.umaestro.fr/uploads"
                         :before-upload="beforeUpload"
                         :on-success="(data) => onSuccess(data, 'fr')"
                     >
@@ -47,7 +47,7 @@
                     <el-upload
                         class="upload-demo"
                         drag
-                        action="http://localhost:3000/uploads"
+                        action="https://api.umaestro.fr/uploads"
                         :before-upload="beforeUpload"
                         :on-success="(data) => onSuccess(data, 'en')"
                     >
