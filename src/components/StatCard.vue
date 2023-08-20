@@ -43,7 +43,7 @@ const percent = computed(() => {
         <div class="statistic-footer" v-if="before !== undefined">
             <div class="footer-item">
                 <span>Par rapport à la semaine dernière:</span>
-                <el-tooltip :content="before" placement="top" effect="dark">
+                <el-tooltip :content="before.toString()" placement="top" effect="dark">
                     <span :class="percent < 0 ? 'red' : percent === 0 ? 'orange' : 'green'">
                         {{ percent }}%
                         <el-icon>

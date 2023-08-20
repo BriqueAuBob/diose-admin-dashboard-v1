@@ -28,10 +28,11 @@ watch(
     async (code) => {
         if (!code) return;
         const { data } = await axios.get(`auth/user/code?code=${code}`);
+        if (!data?.token) return;
         localStorage.setItem('access_token', data.token.token);
         await useAuthStore().login(data.user);
         router.push('/dashboard');
-    },
+    }
 );
 
 onMounted(async () => {
@@ -45,6 +46,6 @@ watch(
     () => route.path,
     (path) => {
         noLayout.value = path === '/' || path === '/authentification/callback';
-    },
+    }
 );
 </script>

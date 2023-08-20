@@ -6,15 +6,23 @@
         <main>
             <ul>
                 <li v-for="link in links" :key="link.name">
-                    <router-link v-if="link.href" :to="link.href" class="link">
+                    <router-link
+                        v-if="link.href && (!child?.permission || useCheckPermission(child?.permission))"
+                        :to="link.href"
+                        class="link"
+                    >
                         <component :is="link.icon" class="w-6 h-6" />
                         <span class="link_name">{{ link.name }}</span>
                     </router-link>
-                    <div v-else class="group">
+                    <div v-else-if="!link.href" class="group">
                         <span class="group_name">{{ link.name }}</span>
                         <ul>
                             <li v-for="child in link.childrens" :key="child.name">
-                                <router-link :to="child.href" class="link">
+                                <router-link
+                                    :to="child.href"
+                                    class="link"
+                                    v-if="!child?.permission || useCheckPermission(child?.permission)"
+                                >
                                     <component v-if="child.icon" :is="child.icon" class="w-6 h-6" />
                                     <span class="link_name">{{ child.name }}</span>
                                 </router-link>
@@ -43,8 +51,10 @@ import {
     CubeIcon,
     ShieldCheckIcon,
     NoSymbolIcon,
+    NewspaperIcon,
 } from '@heroicons/vue/24/solid';
 import { useAuthStore } from '../store/auth';
+import useCheckPermission from '../composables/useCheckPermission';
 
 const user = ref({});
 const links = [
@@ -60,16 +70,19 @@ const links = [
                 name: 'Liste des utilisateurs',
                 href: '/users',
                 icon: UsersIcon,
+                permission: 'read_user',
             },
             {
                 name: 'Roles',
                 href: '/roles',
                 icon: ShieldCheckIcon,
+                permission: 'read_roles',
             },
             {
                 name: 'Permissions',
                 href: '/permissions',
                 icon: NoSymbolIcon,
+                permission: 'read_permissions',
             },
         ],
     },
@@ -80,8 +93,15 @@ const links = [
                 name: 'Utilisations',
                 href: '/stats/usages',
                 icon: CubeIcon,
+                permission: 'read_user',
             },
         ],
+    },
+    {
+        name: 'Articles',
+        href: '/articles',
+        icon: NewspaperIcon,
+        permission: 'view_articles',
     },
 ];
 
